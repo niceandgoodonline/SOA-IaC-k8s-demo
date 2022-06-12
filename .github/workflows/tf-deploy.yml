@@ -1,0 +1,11 @@
+name: Terraform Deploy
+
+on:
+  workflow_dispatch:
+
+jobs:
+  tf-deploy:
+    runs-on: ubuntu:latest
+    steps: 
+      - uses: docker://niceandgoodonline/tf-awscli:latest
+    
