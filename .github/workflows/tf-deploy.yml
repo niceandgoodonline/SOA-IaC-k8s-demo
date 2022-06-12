@@ -7,6 +7,6 @@ jobs:
   tf-deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: niceandgoodonline/tf-awscli:latest
-    - run: |
+    - uses:  docker://niceandgoodonline/tf-awscli:latest
+      run: |
         ls
