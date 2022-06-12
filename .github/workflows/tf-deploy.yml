@@ -8,5 +8,3 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses:  docker://niceandgoodonline/tf-awscli:latest
-      run: |
-        ls
