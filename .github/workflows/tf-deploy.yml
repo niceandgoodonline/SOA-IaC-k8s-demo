@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     container: docker://niceandgoodonline/tf-awscli:latest
     steps:
+    - uses: actions/checkout@v3
     - name: testing
       run: |
         cd ..
