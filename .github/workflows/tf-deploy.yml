@@ -1,0 +1,16 @@
+name: Terraform Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Person to greet'
+        default: 'World'
+
+jobs:
+  greet:
+    runs-on: niceandgoodonline/tf-awscli
+    steps:
+    - run: ls
+    - run: aws --version
+    - run: terraform -version
