@@ -5,5 +5,10 @@ on:
 
 jobs:
   tf-deploy:
-    container:
-      image: niceandgoodonline/tf-awscli:latest
+    runs-on: ubuntu-latest
+    container: { image: alpine }
+    steps:
+    - run: uname -a
+    - run: cat /etc/alpine-release
+    - run: touch /hello
+    - run: ls /
