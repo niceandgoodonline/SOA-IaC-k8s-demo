@@ -6,9 +6,7 @@ on:
 jobs:
   tf-deploy:
     runs-on: ubuntu-latest
-    container: { image: alpine }
     steps:
-    - run: uname -a
-    - run: cat /etc/alpine-release
-    - run: touch /hello
-    - run: ls /
+    - uses: niceandgoodonline/tf-awscli:latest
+    - run: |
+        ls
