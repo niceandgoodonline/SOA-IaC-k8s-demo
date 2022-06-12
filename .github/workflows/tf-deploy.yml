@@ -5,6 +5,5 @@ on:
 
 jobs:
   tf-deploy:
-    runs-on: ubuntu:latest
     container:
       image: niceandgoodonline/tf-awscli:latest
