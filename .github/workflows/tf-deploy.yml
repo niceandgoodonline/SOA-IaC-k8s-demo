@@ -10,5 +10,6 @@ jobs:
     steps:
     - name: testing
       run: |
+        cd ..
         ls
         pwd
