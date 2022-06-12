@@ -11,4 +11,4 @@ jobs:
     - name: testing
       run: |
         ls
-        ./entrypoint.sh
+        pwd
