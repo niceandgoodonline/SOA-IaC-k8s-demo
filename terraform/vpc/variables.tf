@@ -2,7 +2,7 @@
 # variables for provider.tf
 ###
 
-variable "my_region" {
+variable "region" {
   type    = string
   default = "us-west-2"
 }
@@ -41,7 +41,7 @@ variable "vpc_private_subnets" {
   default =  ["10.20.1.0/24", "10.20.2.0/24"]
 }
 
-variable "my_igw_name" {
+variable "igw_name" {
   type    = string
   default = "terramera_vpc_igw"
 }

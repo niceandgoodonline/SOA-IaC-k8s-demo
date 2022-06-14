@@ -12,7 +12,7 @@ module "vpc" {
   public_subnets          = var.vpc_private_subnets
 
   igw_tags = {
-    "Name"      = var.my_igw_name
+    "Name"      = var.igw_name
   }
 
   tags     = {
