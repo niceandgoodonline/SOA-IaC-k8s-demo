@@ -9,8 +9,11 @@ jobs:
     container: docker://niceandgoodonline/tf-awscli:latest
     steps:
     - uses: actions/checkout@v3
-    - name: testing
+    - name: Deploy Terramera Backend Bucket
       run: |
         source .github/sh/aws_auth.sh
         source .github/sh/assume_tf_iamrole.sh
-        
+        cd terraform/backend/terramera-demo
+        source ./vars.sh
+        terraform init
+        terraform apply -auto-approve
