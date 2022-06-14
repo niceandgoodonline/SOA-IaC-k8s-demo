@@ -4,7 +4,7 @@ resource "aws_ssm_parameter" "vpc_id_state" {
   ]
   name  = "/terramera-demo/state/vpc/id"
   type  = "String"
-  value = module.vpc.id
+  value = module.vpc.vpc_id
 }
 
 resource "aws_ssm_parameter" "vpc_private_subnets_state" {
