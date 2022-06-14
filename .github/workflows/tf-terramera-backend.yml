@@ -1,4 +1,4 @@
-name: Terraform Deploy
+name: Terraform Backend Deploy
 
 on:
   workflow_dispatch:
