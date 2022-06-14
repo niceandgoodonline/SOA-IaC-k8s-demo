@@ -6,6 +6,10 @@ on:
 jobs:
   tf-deploy:
     runs-on: ubuntu-latest
+    env:
+      AWS_KEY: ${{ secrets.AWS_KEY }}
+      AWS_SEC: ${{ secrets.AWS_SEC }}
+      TF_EXT: ${{ secrets.TF_EXT }}
     container: docker://niceandgoodonline/tf-awscli:latest
     steps:
     - uses: actions/checkout@v3
