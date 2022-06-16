@@ -1,4 +1,4 @@
-data "aws_iam_policy_document" "terramera_backend_kms_policy" {
+data "aws_iam_policy_document" "soc_iac_k8s_backend_kms_policy" {
   statement {
     effect    = "Allow"
     resources = ["*"]

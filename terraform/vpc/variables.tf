@@ -18,7 +18,7 @@ variable "provider_profile" {
 
 variable "vpc_name" {
   type    = string
-  default = "terramera_vpc"
+  default = "soc_iac_k8s_vpc"
 }
 
 variable "vpc_cidr" {
@@ -43,15 +43,15 @@ variable "vpc_private_subnets" {
 
 variable "igw_name" {
   type    = string
-  default = "terramera_vpc_igw"
+  default = "soc_iac_k8s_vpc_igw"
 }
 
 variable "terraform_repo" {
   type    = string
-  default = "github.com/niceandgoodonline/terramera-demo"
+  default = "github.com/niceandgoodonline/soc-iac-k8s-demo"
 }
 
 variable "environment" {
   type    = string
-  default = "terramera"
+  default = "soc-iac-k8s"
 }

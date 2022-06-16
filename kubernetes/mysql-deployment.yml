@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: soc-iac-k8s-mysql
+spec:
+  selector:
+    matchLabels:
+      app: soc-iac-k8s-mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: soc-iac-k8s-mysql
+    spec:
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: mysql-pvc
+      - name: mysql-init-soc-iac-k8s-db-sql
+        configMap:
+          name: mysql-init-soc-iac-k8s-db-sql
+      containers:
+      - image: mysql:5.7
+        name: mysql
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-root-secret
+              key: password
+              optional: false
+        ports:
+        - containerPort: 3306
+          name: soc-iac-k8s-mysql
+        volumeMounts:
+        - name: mysql-persistent-storage
+          mountPath: /var/lib/mysql
+        - name: mysql-init-soc-iac-k8s-db-sql
+          mountPath: /docker-entrypoint-initdb.d
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: soc-iac-k8s-mysql
+spec:
+  ports:
+  - port: 3306
+    protocol: TCP
+    name: soc-iac-k8s-mysql
+  selector:
+    app: soc-iac-k8s-mysql
+  type: NodePort

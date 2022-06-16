@@ -1,0 +1,31 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: soc-iac-k8s-database-updater
+  labels:
+    app: db-updater
+spec:
+  selector:
+    matchLabels:
+      app: db-updater
+  template:
+    metadata:
+      labels:
+        app: db-updater
+    spec:
+      containers:
+      - name: soc-iac-k8s-db-updater
+        image: niceandgoodonline/soc-iac-k8s-database-updater
+        env:
+        - name: MYSQL_DB_HOST
+          value: soc-iac-k8s-mysql
+        - name: MYSQL_WRITE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-write-secret
+              key: password
+              optional: false
+        ports:
+        - containerPort: 12000
+          name: db-updater

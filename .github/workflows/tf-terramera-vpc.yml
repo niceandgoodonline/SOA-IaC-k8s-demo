@@ -13,7 +13,7 @@ jobs:
     container: docker://niceandgoodonline/tf-awscli:latest
     steps:
     - uses: actions/checkout@v3
-    - name: Deploy Terramera VPC
+    - name: Deploy soc-iac-k8s VPC
       run: |
         source .github/sh/aws_auth.sh
         source .github/sh/assume_tf_iamrole.sh

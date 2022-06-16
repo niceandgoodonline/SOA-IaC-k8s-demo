@@ -1,0 +1,49 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: soc-iac-k8s-processor
+  labels:
+    app: processor
+spec:
+  selector:
+    matchLabels:
+      app: processor
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: processor
+    spec:
+      containers:
+      - name: soc-iac-k8s-processor
+        image: niceandgoodonline/soc-iac-k8s-processor
+        env:
+        - name: MYSQL_DB_HOST
+          value: soc-iac-k8s-mysql
+        - name: MYSQL_READ_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-read-secret
+              key: password
+              optional: false
+        ports:
+        - containerPort: 11000
+          name: processor
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: processor
+  labels:
+    app: processor
+spec:
+  ports:
+  - port: 11000
+    protocol: TCP
+    name: processor
+  selector:
+    app: processor
+  type: NodePort
