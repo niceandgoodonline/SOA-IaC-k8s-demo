@@ -17,8 +17,8 @@ jobs:
       run: |
         source .github/sh/aws_auth.sh
         source .github/sh/assume_tf_iamrole.sh
+        source .github/sh/vars.sh
         cd terraform/k8s
-        source ./vars.sh
         source ./set_vpc_state.sh
         terraform init
         terraform apply -auto-approve

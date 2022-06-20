@@ -17,7 +17,7 @@ jobs:
       run: |
         source .github/sh/aws_auth.sh
         source .github/sh/assume_tf_iamrole.sh
+        source .github/sh/vars.sh
         cd terraform/backend/soc-iac-k8s-demo
-        source ./vars.sh
         terraform init
         terraform apply -auto-approve

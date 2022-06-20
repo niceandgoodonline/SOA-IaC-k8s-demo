@@ -1,4 +1,4 @@
-name: Terraform Kubernetes Deploy
+name: Terraform Kubernetes DESTROY
 
 on:
   workflow_dispatch:
@@ -13,12 +13,12 @@ jobs:
     container: docker://niceandgoodonline/tf-awscli:latest
     steps:
     - uses: actions/checkout@v3
-    - name: Deploy soc-iac-k8s k8s EC2 Instance
+    - name: DESTROY soc-iac-k8s k8s EC2 Instance
       run: |
         source .github/sh/aws_auth.sh
         source .github/sh/assume_tf_iamrole.sh
+        source .github/sh/vars.sh
         cd terraform/k8s
-        source ./vars.sh
         source ./set_vpc_state.sh
         terraform init
         terraform destroy -auto-approve
