@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  tf-deploy:
+  tf--backend-deploy:
     runs-on: ubuntu-latest
     env:
       AWS_KEY: ${{ secrets.AWS_KEY }}

@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  tf-deploy:
+  tf-k8s-deploy:
     runs-on: ubuntu-latest
     env:
       AWS_KEY: ${{ secrets.AWS_KEY }}
@@ -21,4 +21,4 @@ jobs:
         cd terraform/k8s
         source ./set_vpc_state.sh
         terraform init
-        terraform apply -auto-approve
+        terraform apply -auto-approve -var-file="state.tfvars"
