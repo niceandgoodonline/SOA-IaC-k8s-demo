@@ -15,8 +15,5 @@ module "vpc" {
     "Name"      = var.igw_name
   }
 
-  tags     = {
-    Repo        = var.terraform_repo
-    Environment = var.environment
-  }
+  tags     = var.tags
 }

@@ -7,11 +7,6 @@ variable "region" {
   default = "us-west-2"
 }
 
-variable "provider_profile" {
-  type    = string
-  default = "orchestration"
-}
-
 ###
 # variables for main.tf
 ###
@@ -46,12 +41,13 @@ variable "igw_name" {
   default = "soc_iac_k8s_vpc_igw"
 }
 
-variable "terraform_repo" {
-  type    = string
-  default = "github.com/niceandgoodonline/soc-iac-k8s-demo"
-}
-
-variable "environment" {
-  type    = string
-  default = "soc-iac-k8s"
+variable "tags" {
+  type = object({
+    Repo        = string
+    Environment = string
+  })
+  default = {
+    Repo        = "github.com/niceandgoodonline/soc-iac-k8s-demo"
+    Environment = "soc-iac-k8s"
+  }
 }

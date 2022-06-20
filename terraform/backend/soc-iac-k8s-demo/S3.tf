@@ -3,20 +3,14 @@ resource "aws_kms_key" "soc_iac_k8s_kms_key" {
   enable_key_rotation = true
   policy              = data.aws_iam_policy_document.soc_iac_k8s_backend_kms_policy.json
 
-  tags = {
-    Repo        = "github.com/niceandgoodonline/soc-iac-k8s-demo"
-    Environment = "soc-iac-k8s"
-  }
+  tags = var.tags
 }
 
 
 resource "aws_s3_bucket" "soc_iac_k8s_backend" {
-  bucket = "soc-iac-k8s-demo-backend"
+  bucket = var.bucket
 
-  tags = {
-    Repo        = "github.com/niceandgoodonline/soc-iac-k8s-demo"
-    Environment = "soc-iac-k8s"
-  }
+  tags = var.tags
 }
 
 resource "aws_s3_bucket_acl" "soc_iac_k8s_backend_acl" {
